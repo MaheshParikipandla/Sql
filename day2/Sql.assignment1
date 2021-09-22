@@ -1,0 +1,81 @@
+create database hw;
+
+create table hw_table(
+id int PRIMARY KEY,
+name varchar(50),
+dept_id int,
+marks int);
+
+insert into hw_table values(1,'mahesh',10,200),(2,'sai',11,100),(3,'pspk',12,300);
+
+select * from hw_table;
+
+UPDATE hw_table SET dept_id=12 WHERE id=2;
+
+insert into hw_table values(5,'mahesh',10,200);
+
+alter table hw_table add result varchar(40);
+
+delete from hw_table where id=5;
+
+truncate demo.section2;
+drop demo.section2;
+
+create table table3(
+id int NOT NULL,
+firstname varchar(40) NOT NULL,
+lastname varchar(20),
+age int,
+PRIMARY KEY (id)
+);
+
+insert into table3 values(1,'m','k',1);
+
+select *from table3;
+
+
+create table stud_table; 
+
+insert into stud_table values(1,'mahesh','cse',10,100),(2,'sai','ece',11,200),(3,'pinky','cse',12,300);
+
+
+
+create table sales(
+salesid int not null primary key,
+salesname varchar(20),
+address varchar(20)
+);
+
+
+create table order_sales
+(
+id int primary key,
+productname varchar(18),
+address varchar(20),
+salesid int,
+
+constraint FK_order FOREIGN KEY(salesid) REFERENCES sales(salesid)
+)
+
+insert into sales values(1,'m','abc'),(2,'n','abc'),(3,'p','abc');
+
+select *from sales;
+insert into order_sales values(10,'a','belt',2),(11,'b','pad',2),(12,'c','shoes',1);
+
+select *from sales s inner join order_sales p on s.salesid=p.salesid;
+
+
+select *from order_sales where salesid=(select salesid from sales where salesname='m');
+select s.salesid, p.productname from sales s inner join order_sales p on s.salesid=p.salesid;
+
+select s.salesid, p.productname from sales s left join order_sales p on s.salesid=p.salesid;
+
+select s.salesid, p.productname from sales s right join order_sales p on s.salesid=p.salesid;
+
+
+
+
+
+
+
+
