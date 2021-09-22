@@ -1,0 +1,59 @@
+create database hw;
+
+create table hw_table(
+id int PRIMARY KEY,
+name varchar(50),
+dept_id int,
+marks int);
+
+insert into hw_table values(1,'mahesh',10,200),(2,'sai',11,100),(3,'pspk',12,300);
+
+select * from hw_table;
+select * from hw_table;
+select count(id) from hw_table;
+
+select avg(marks) from hw_table;
+select sum(marks) from hw_table;
+
+select max(marks) from hw_table;
+select min(marks) from hw_table where id<4;
+
+select *from hw_table where dept_id=12;
+
+select id,marks from hw_table where name='mahesh' and id=1;
+
+select id,marks from hw_table where name='mahesh' or id=3;
+
+select id,marks from hw_table where not name='mahesh' ;
+
+select *from hw_table order by id DESC;
+
+select *from hw_table where id<6 LIMIT 1,2;
+
+select *from hw_table GROUP BY dept_id;
+select *from hw_table GROUP BY dept_id having id<4;
+select *from stud_table where dept_id=(select id from dept where dept_name='cse');
+
+
+select *from stud_table where dept_id in (select id from dept where dept_name='cse' || dept_name='ece');
+
+select *from stud_table where dept_id=3;
+
+
+create table stud_table; 
+
+insert into stud_table values(1,'mahesh','cse',10,100),(2,'sai','ece',11,200),(3,'pinky','cse',12,300);
+
+select *from stud_table where marks>100;
+
+select *from stud_table where marks>=100 and marks<=200;
+
+select *from stud_table where marks>100 and marks<300;
+
+select *from stud_table where marks>100 or marks<200;
+
+select *from stud_table where name='sai';
+
+select *from stud_table where name like'%i';
+select * from stud_table; 
+
